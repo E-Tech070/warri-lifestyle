@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { drawMap } from '../rendering/drawMap.js';
 
 export default class WorldScene extends Phaser.Scene {
   constructor() {
@@ -6,13 +7,13 @@ export default class WorldScene extends Phaser.Scene {
   }
 
   create() {
-    const centerX = this.scale.width / 2;
-    const centerY = this.scale.height / 2;
+    drawMap(this);
 
-    this.add.text(centerX, centerY, 'WARRI LIFESTYLE', {
-      fontFamily: 'Arial',
-      fontSize: '48px',
-      color: '#ffffff'
-    }).setOrigin(0.5);
+    this.add
+      .text(500, 40, 'WARRI LIFESTYLE', {
+        fontSize: '32px',
+        color: '#ffffff'
+      })
+      .setOrigin(0.5);
   }
 }
