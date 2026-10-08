@@ -1,5 +1,4 @@
-import Phaser from 'phaser';
-import { gridToScreen } from '../rendering/isometric.js';
+import { getTileCenter } from "../rendering/mapLayout.js";
 
 export class PlayerRenderer {
   constructor(scene, player) {
@@ -11,18 +10,12 @@ export class PlayerRenderer {
   }
 
   update() {
-    const position = gridToScreen(
+    const center = getTileCenter(
+      this.scene,
       this.player.gridX,
-      this.player.gridY
+      this.player.gridY,
     );
 
-    const mapHeight = 10;
-const mapPixelHeight = (12 + mapHeight) * 16;
-const offsetY = (this.scene.scale.height - mapPixelHeight) / 2;
-
-this.sprite.setPosition(
-  position.x + this.scene.scale.width / 2,
-  position.y + offsetY + 16
-);
+    this.sprite.setPosition(center.x, center.y);
   }
 }
