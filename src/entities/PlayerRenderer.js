@@ -16,9 +16,13 @@ export class PlayerRenderer {
       this.player.gridY
     );
 
-    this.sprite.setPosition(
-      position.x + this.scene.scale.width / 2,
-      position.y + 16
-    );
+    const mapHeight = 10;
+const mapPixelHeight = (12 + mapHeight) * 16;
+const offsetY = (this.scene.scale.height - mapPixelHeight) / 2;
+
+this.sprite.setPosition(
+  position.x + this.scene.scale.width / 2,
+  position.y + offsetY + 16
+);
   }
 }
